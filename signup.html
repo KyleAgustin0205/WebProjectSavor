@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Savor & Co.</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">Savor <span>&amp;</span> Co.</div>
+      <h2>Create Account</h2>
+      <p class="subtitle">Join us and enjoy the best Filipino dining experience</p>
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" />
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Choose a username" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Create a password" />
+          <button class="toggle-pass" onclick="togglePassword('password')" type="button">&#128065;</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirm-password" placeholder="Confirm your password" />
+          <button class="toggle-pass" onclick="togglePassword('confirm-password')" type="button">&#128065;</button>
+        </div>
+      </div>
+      <button class="auth-submit" onclick="handleSignup()">Create Account</button>
+      <p class="auth-switch">Already have an account? <a href="login.html">Log In</a></p>
+      <a href="index.html" class="back-home">&#8592; Back to Home</a>
+    </div>
+  </div>
+  <script>
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+    function handleSignup() {
+      const fullname = document.getElementById('fullname').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirm = document.getElementById('confirm-password').value.trim();
+      if (!fullname || !username || !email || !password || !confirm) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      if (password !== confirm) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+      alert('Account created successfully! Welcome, ' + username + '!');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
